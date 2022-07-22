@@ -60,7 +60,7 @@ const getFilename = async (res, data) => {
   let filename = filenameFromPath(res);
 
   if (!path.extname(filename)) {
-    const ext = ((await FileType.fromBuffer(data)) || {}).ext || getExtFromMime(res);
+    const ext = ((await FileType.fileTypeFromBuffer(data)) || {}).ext || getExtFromMime(res);
 
     if (ext) {
       filename = `${filename}.${ext}`;
